@@ -22,6 +22,7 @@ import com.charleskorn.kaml.build.configureSpotless
 import com.charleskorn.kaml.build.configureTesting
 import com.charleskorn.kaml.build.configureVersioning
 import com.charleskorn.kaml.build.configureWrapper
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.targets.js.ir.KotlinJsIrLink
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
@@ -50,6 +51,7 @@ kotlin {
         binaries.executable()
     }
 
+    @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
         binaries.library()
         browser()
@@ -61,12 +63,13 @@ kotlin {
     macosX64()
     macosArm64()
     iosSimulatorArm64()
-    iosX64()
+    iosArm64()
 
     // Tier 2
     linuxX64()
     linuxArm64()
-    iosArm64()
+    macosX64()
+    iosX64()
     watchosSimulatorArm64()
     watchosX64()
     watchosArm32()
